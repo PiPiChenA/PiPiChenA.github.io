@@ -346,6 +346,65 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href="/2018/11/21/CBC字节反转攻击问题/">
+            
+                <span>CBC反转攻击问题</span>
+        </a>
+        <div class="abstract-content">
+            今晚突然想起来之前有一道web题每次做都因为密码学方面知识的欠缺放弃了，今晚抽空给他研究出来。题目地址:http://ctf5.shiyanbar.com/web/jiandan/index.php，上来先用御剑扫描了一波，发现了test.php文件。访问一下,得到题目源码：
+源码源码如下:123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778&lt;...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/11/21</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Crypto">Crypto</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href="/2018/11/18/湖湘杯/">
+            
+                <span>湖湘杯部分题目wp</span>
+        </a>
+        <div class="abstract-content">
+            code check看题目提示，应该是源码审计的问题，但是不知道源码，所以御剑扫一下，得到了一个地址下载list.zip解压得到源码如下：123456789101112131415161718192021&lt;?phpheader(&apos;content-type:text/html;charset=utf-8&apos;);require_once &apos;../config.php&apos;;//解密过程function decode($data)&#123;	$td = mcrypt_module_open(MCRYPT_RIJNDAEL_128,&apos;&apos...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/11/18</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class="abstract-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="CTF">CTF</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href="/2018/11/17/2018高校网络安全信息安全管理运维挑战赛/">
             
                 <span>2018高校网络信息安全管理运维挑战赛wp</span>
@@ -572,65 +631,6 @@ md5 collision常规的md5弱比较问题，QNKCDZO的md5是0e开头，弱比较�
             <!-- date  -->
             <div class="abstract-date">
                 <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/10/27</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="CTF">CTF</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2018/10/26/jarvisoj/">
-            
-                <span>jarvisoj web部分wp</span>
-        </a>
-        <div class="abstract-content">
-            Port 51直接在vps上访问即可
-Simple injection12345678910111213141516171819202122import requeststemp=&apos;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&apos;url=&apos;http://web.jarvisoj.com:32787/login.php&apos;s=requests.session()user=&quot;admin&apos;and/**/substr(database(),&#123;0&#12...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/10/26</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="CTF">CTF</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2018/10/24/phpxuliehua/">
-            
-                <span>PHP反序列化的一些例子</span>
-        </a>
-        <div class="abstract-content">
-            之前web一直被PHP反序列化的一些问题困扰，现在痛定思痛，决定好好的总结一番(大佬请略过)一般反序列化能用的例子都是利用了PHP中的一些可以自动调用的特殊函数，类似于C++中的构造函数之类的，不需要其他函数调用即可自动运行。通常称这些函数为魔幻函数，常用的魔幻函数包括construct(), destruct(),  sleep(), wakeup(), toString().首先我们以construct()为例，测试一下其自动执行情况。1234567891011&lt;?php	class example	&#123;		var $xxx=&apos;hahahaha&apos;;	...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/10/24</span>
             </div>
             <!-- tags  -->
             
@@ -1004,9 +1004,37 @@ Simple injection12345678910111213141516171819202122import requeststemp=&apos;abc
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 22
+        Total : 24
         </div>
         <!-- search  -->
         
@@ -1019,6 +1047,16 @@ Simple injection12345678910111213141516171819202122import requeststemp=&apos;abc
     
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/27</span><a class="archive-post-title" href="/2019/05/27/QWB反序列化/">国赛一道反序列化的思考</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/21</span><a class="archive-post-title" href="/2019/05/21/rctf web/">Rctf web复现</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -1149,6 +1187,8 @@ Simple injection12345678910111213141516171819202122import requeststemp=&apos;abc
         <span class="sidebar-tag-name" data-tags="Crypto"><span class="iconfont-archer">&#xe606;</span>Crypto</span>
     
         <span class="sidebar-tag-name" data-tags="Analysis"><span class="iconfont-archer">&#xe606;</span>Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="反序列化"><span class="iconfont-archer">&#xe606;</span>反序列化</span>
     
         <span class="sidebar-tag-name" data-tags="总结"><span class="iconfont-archer">&#xe606;</span>总结</span>
     

