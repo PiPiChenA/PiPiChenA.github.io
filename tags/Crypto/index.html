@@ -346,54 +346,23 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href="/2019/05/19/padding oracle/">
+        <a class="abstract-title" href="/2019/05/26/俄罗斯套娃/">
             
-                <span>padding oracle学习</span>
+                <span>2019强网杯一道密码-俄罗斯套娃</span>
         </a>
         <div class="abstract-content">
-            周末做了一下RCTF，web太菜了属实是打不动，听同学说有一道AES的padding Oracle题目，之前没做过，这次借着这个题目，学习一下,本题为RCTF2019的密码，baby_crypto题目代码如下:
-12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091#!/usr/bin/python3...
+            上周末做了一下强网杯，有一道密码题感觉很好，总结了很多RSA的知识，于是想写下了，加深一下自己的理解。题目和2018年强网杯的有一道密码很类似，都是俄罗斯套娃，不过今年的题目，比较简单一些，关卡也少了一些，就只有六关XD首先上来先是一段爆破hash值，这个比较简单payload如下，直接爆破即可：12345678910111213141516171819202122232425262728293031from pwn import *import hashpumpyimport osimport timeimport hashlibr=remote("119.3.245.36",1234...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/19</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/05/26</span>
             </div>
             <!-- tags  -->
             
             <div class="abstract-tags">
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="Crypto">Crypto</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href="/2018/11/21/CBC字节反转攻击问题/">
-            
-                <span>CBC反转攻击问题</span>
-        </a>
-        <div class="abstract-content">
-            今晚突然想起来之前有一道web题每次做都因为密码学方面知识的欠缺放弃了，今晚抽空给他研究出来。题目地址:http://ctf5.shiyanbar.com/web/jiandan/index.php，上来先用御剑扫描了一波，发现了test.php文件。访问一下,得到题目源码：
-源码源码如下:123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778&lt;...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/11/21</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class="abstract-tags">
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="Crypto">Crypto</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="crypto">crypto</a>
     
 </div>
             
@@ -768,9 +737,32 @@
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 23
+        Total : 24
         </div>
         <!-- search  -->
         
@@ -787,6 +779,11 @@
     
         <li class="archive-post-item">
             <span class="archive-post-date">05/27</span><a class="archive-post-title" href="/2019/05/27/QWB反序列化/">国赛一道反序列化的思考</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/26</span><a class="archive-post-title" href="/2019/05/26/俄罗斯套娃/">2019强网杯一道密码-俄罗斯套娃</a>
         </li>
     
     
@@ -917,11 +914,13 @@
     
         <span class="sidebar-tag-name" data-tags="Crypto"><span class="iconfont-archer">&#xe606;</span>Crypto</span>
     
-        <span class="sidebar-tag-name" data-tags="反序列化"><span class="iconfont-archer">&#xe606;</span>反序列化</span>
-    
         <span class="sidebar-tag-name" data-tags="Analysis"><span class="iconfont-archer">&#xe606;</span>Analysis</span>
     
+        <span class="sidebar-tag-name" data-tags="反序列化"><span class="iconfont-archer">&#xe606;</span>反序列化</span>
+    
         <span class="sidebar-tag-name" data-tags="总结"><span class="iconfont-archer">&#xe606;</span>总结</span>
+    
+        <span class="sidebar-tag-name" data-tags="crypto"><span class="iconfont-archer">&#xe606;</span>crypto</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -952,6 +951,48 @@ jsonContent:
     tags: true</pre>
     </div> 
     <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Bling_Dog"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+     
+    </body>
+</html>
+
+
+iv class="sidebar-tags-list"></div>
 </div>
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
